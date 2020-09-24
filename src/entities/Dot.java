@@ -3,19 +3,11 @@ package entities;
 import java.util.Objects;
 
 public class Dot {
-    private double x;
-    private double y;
+    final private double x;
+    final private double y;
 
     public Dot(double x, double y) {
         this.x = x;
-        this.y = y;
-    }
-
-    public void setX(double x) {
-        this.x = x;
-    }
-
-    public void setY(double y) {
         this.y = y;
     }
 

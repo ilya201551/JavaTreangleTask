@@ -1,28 +1,29 @@
 package entities;
 
+import entities.exceptions.TriangleLogicException;
+
 import java.util.Objects;
 
-public class Triangle {
-    private Dot apexA;
-    private Dot apexB;
-    private Dot apexC;
+public class Triangle extends AbstractFigure{
+    final private Dot apexA;
+    final private Dot apexB;
+    final private Dot apexC;
 
-    public Triangle(Dot apexA, Dot apexB, Dot apexC) {
+    public Triangle(Dot apexA, Dot apexB, Dot apexC) throws TriangleLogicException {
         this.apexA = apexA;
         this.apexB = apexB;
         this.apexC = apexC;
-    }
 
-    public void setApexA(Dot apexA) {
-        this.apexA = apexA;
-    }
+        double x1 = apexA.getX();
+        double y1 = apexA.getY();
+        double x2 = apexB.getX();
+        double y2 = apexB.getY();
+        double x3 = apexC.getX();
+        double y3 = apexC.getY();
 
-    public void setApexB(Dot apexB) {
-        this.apexB = apexB;
-    }
-
-    public void setApexC(Dot apexC) {
-        this.apexC = apexC;
+        if ((x1 == x2 && x1 == x3) || (y1 == y2 && y1 == y3)) {
+            throw new TriangleLogicException("given dots do not form a triangle");
+        }
     }
 
     public Dot getApexA() {
